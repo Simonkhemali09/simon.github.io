@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shoppingApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="angular.min.js"></script>
+    <script src="app2.js"></script>
+</head>
+<body ng-controller="ProductController">
+    <!-- Header -->
+    <header>
+        <div class="logo">ShopEasy</div>
+        <br>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="checkout.html">Cart ({{cart.length}})</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Search Bar -->
+    <section class="search-bar">
+        <input type="text" placeholder="Search for products..." ng-model="searchQuery">
+    </section>
+
+    <!-- Product Section -->
+    <section class="products">
+        <div class="product" ng-repeat="product in products | filter:searchQuery">
+            <img ng-src="{{product.image}}" alt="{{product.name}}">
+            <h2>{{product.name}}</h2>
+            <p>{{product.description}}</p>
+            <p class="price">{{product.price| currency:"₹"}}</p>
+            <button ng-click="addToCart(product)">Add to Cart</button>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="cart">
+        <h3>Your Cart</h3>
+        <div class="cart-item" ng-repeat="item in cart">
+            <p>{{item.name}} - {{item.price| currency:"₹"}}</p>
+        </div>
+        <div class="total" >
+            <p>Total: {{getTotal()| currency:"₹"}}</p>
+            <button ng-click="checkout()"><a href="checkout.html" >Checkout</a></button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 ShopEasy. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shoppingApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <script src="angular.min.js"></script>
+    <script src="app2.js"></script>
+</head>
+<body ng-controller="ContactController">
+    <header>
+        <div class="logo">ShopEasy</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html">Products</a>
+            <a href="checkout.html">Cart</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="contact">
+        <h2>Meet the Team</h2>
+        <img src="contact.jpg" alt="authors" width="250px" height="230px">
+        <div class="authors" ng-repeat="author in authors">
+      
+            <div class="author-info">
+                <h3>{{author.name}}</h3>
+                <p>{{author.role}}</p>
+                <p>{{author.email}}</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 ShopEasy. All rights reserved.</p>
+    </footer>
+</body>
+</html>
